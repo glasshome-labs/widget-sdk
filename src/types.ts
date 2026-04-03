@@ -1,3 +1,5 @@
+import type { ZodType } from "zod";
+
 /**
  * Grid size constraint — number of columns (w) and rows (h).
  */
@@ -11,15 +13,16 @@ export interface GridSize {
  * Framework-agnostic: no SolidJS imports.
  */
 export interface WidgetManifest {
-  tag: string;
   name: string;
   description?: string;
   minSize: GridSize;
   maxSize: GridSize;
+  defaultSize?: GridSize;
   sdkVersion: string;
   icon?: string;
-  schema?: object;
-  defaultConfig?: Record<string, unknown>;
+  schema?: object;                         // Backward compat; auto-populated by vite plugin from configSchema
+  defaultConfig?: Record<string, unknown>; // Backward compat; replaced by Zod .default() values
+  configVersion?: number;                  // Per D-11: integer, bumped on breaking config changes
 }
 
 /**
@@ -48,5 +51,7 @@ export interface WidgetContext {
  */
 export interface WidgetDefinition<C = Record<string, unknown>> {
   manifest: WidgetManifest;
+  configSchema?: ZodType<C, unknown>;  // Per D-10: Zod schema as single source of truth
+  migrate?: (config: Record<string, unknown>, fromConfigVersion: number) => Record<string, unknown>; // Per D-13: optional migration function
   component: (props: { config: C }) => any;
 }
