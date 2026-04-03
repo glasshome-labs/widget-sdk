@@ -39,6 +39,47 @@ export interface ReactiveWidgetContext {
 }
 
 /**
+ * Setter functions used by Widget.tsx to write real measured values into
+ * the stub context created by WidgetSlot before Widget mounts and measures.
+ */
+export interface BridgeFns {
+  setSize: (v: WidgetSize) => void;
+  setOrientation: (v: WidgetOrientation) => void;
+  setContentLayout: (v: WidgetOrientation) => void;
+  setDimensions: (v: WidgetDimensions) => void;
+  setIsStub: (v: boolean) => void;
+}
+
+/**
+ * Bridgeable widget context — extends ReactiveWidgetContext with internal
+ * fields used by the host (WidgetSlot + Widget.tsx) to make stub accessors
+ * reactive. Widget authors never see or use these fields; useWidgetContext()
+ * still returns ReactiveWidgetContext.
+ */
+export interface BridgeableWidgetContext extends ReactiveWidgetContext {
+  /** True while Widget has not yet measured and updated the stub values */
+  _isStub: () => boolean;
+  /** Setter functions called by Widget.tsx createEffect to push real values */
+  _bridge: BridgeFns;
+}
+
+// Warn once per page load when stub values are read before Widget mounts.
+let _devWarned = false;
+
+/**
+ * Emit a one-time dev-mode console.warn when stub context values are read
+ * before Widget has mounted and bridged real measured values.
+ */
+export function warnIfStub(isStub: () => boolean): void {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const isDev = (import.meta as unknown as { env?: { DEV?: boolean } }).env?.DEV;
+  if (isDev && !_devWarned && isStub()) {
+    _devWarned = true;
+    console.warn("[Widget SDK] Context read before Widget mounted — values are estimated");
+  }
+}
+
+/**
  * Widget context
  * Uses reactive accessor pattern for SolidJS
  */

@@ -16,7 +16,14 @@ export {
   useWidgetConfig,
 } from "./use-widget-config";
 // Context
-export { type ReactiveWidgetContext, useWidgetContext, WidgetCtx } from "./use-widget-context";
+export {
+  type BridgeableWidgetContext,
+  type BridgeFns,
+  type ReactiveWidgetContext,
+  useWidgetContext,
+  warnIfStub,
+  WidgetCtx,
+} from "./use-widget-context";
 // Dialog
 export { useWidgetDialog, type WidgetDialogReturn } from "./use-widget-dialog";
 

@@ -76,6 +76,8 @@ export { WidgetDialog, type WidgetDialogProps, type WidgetDialogTab } from "./di
 
 export {
   type AggregationPreset,
+  type BridgeableWidgetContext,
+  type BridgeFns,
   type ReactiveWidgetContext,
   type UseDebugDataOptions,
   type UseWidgetConfigOptions,
@@ -94,6 +96,7 @@ export {
   useWidgetEntityGroup,
   useWidgetForm,
   useWidgetResponsive,
+  warnIfStub,
   WidgetCtx,
   type WidgetDialogReturn,
   type WidgetResponsiveUtils,
