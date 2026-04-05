@@ -91,13 +91,13 @@ export function WidgetMetricsItem(props: WidgetMetricsItemProps): JSX.Element {
       class={cn("flex flex-col", props.dimmed && "opacity-50", props.class)}
       style={{ gap: spacing.S1(ctx.size()) }}
     >
-      <div class={cn("flex items-center gap-1 text-white/60", typography.metricLabel(ctx.size()))}>
+      <div class={cn("flex items-center gap-1 text-foreground/60", typography.metricLabel(ctx.size()))}>
         {props.icon && <span class="shrink-0">{props.icon}</span>}
         <span>{props.label}</span>
       </div>
-      <div class={cn("font-semibold text-white", typography.metricValue(ctx.size()))}>
+      <div class={cn("font-semibold text-foreground", typography.metricValue(ctx.size()))}>
         {props.value}
-        {props.unit && <span class="ml-1 text-white/70">{props.unit}</span>}
+        {props.unit && <span class="ml-1 text-foreground/70">{props.unit}</span>}
       </div>
     </div>
   );

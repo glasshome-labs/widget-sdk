@@ -37,8 +37,8 @@ export function WidgetSubtitle(props: WidgetSubtitleProps): JSX.Element {
   return (
     <p
       class={cn(
-        "truncate font-medium text-white/80",
-        props.dimmed && "text-white/50",
+        "truncate font-medium text-foreground/80",
+        props.dimmed && "text-foreground/50",
         typography.subtitle(ctx.size()),
         props.class,
       )}

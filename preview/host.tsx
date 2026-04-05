@@ -41,7 +41,7 @@ function PreviewHost() {
               "margin-top": "4px",
             }}
           >
-            &lt;{widget.manifest.tag}&gt; | {widget.manifest.type} | {widget.manifest.size}
+            &lt;{widget.manifest.name}&gt; | {widget.manifest.type} | {widget.manifest.size}
           </p>
         </div>
         <button

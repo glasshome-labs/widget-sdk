@@ -58,7 +58,7 @@ export function WidgetEmptyState(props: WidgetEmptyStateProps): JSX.Element {
       {props.icon && (
         <div
           class={cn(
-            "flex items-center justify-center text-white/30",
+            "flex items-center justify-center text-foreground/30",
             isHorizontal() ? "shrink-0" : "",
           )}
           style={{
@@ -81,7 +81,7 @@ export function WidgetEmptyState(props: WidgetEmptyStateProps): JSX.Element {
         {/* Title */}
         {(props.title ?? "No data") && (
           <h3
-            class={cn("font-semibold text-white/60", typography.subtitle(ctx.size()))}
+            class={cn("font-semibold text-foreground/60", typography.subtitle(ctx.size()))}
             style={{ "max-width": isHorizontal() ? "100%" : "80%" }}
           >
             {props.title ?? "No data"}
@@ -91,7 +91,7 @@ export function WidgetEmptyState(props: WidgetEmptyStateProps): JSX.Element {
         {/* Message */}
         {props.message && (
           <p
-            class={cn("text-white/50", typography.emptyState(ctx.size()))}
+            class={cn("text-foreground/50", typography.emptyState(ctx.size()))}
             style={{ "max-width": isHorizontal() ? "100%" : "85%" }}
           >
             {props.message}

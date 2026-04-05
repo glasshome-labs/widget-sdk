@@ -41,13 +41,13 @@ export function WidgetValue(props: WidgetValueProps): JSX.Element {
 
   return (
     <div class={cn("flex flex-col", props.class)}>
-      <div class={cn("font-bold text-white", typography.value(ctx.size()))}>
+      <div class={cn("font-bold text-foreground", typography.value(ctx.size()))}>
         {formatValue(props.value, props.unit)}
       </div>
 
       {props.interpret && typeof props.value === "number" && (
         <div
-          class={cn("text-white/60", typography.subtitle(ctx.size()))}
+          class={cn("text-foreground/60", typography.subtitle(ctx.size()))}
           style={{ "margin-top": spacing.S1(ctx.size()) }}
         >
           {interpretValue(props.value, props.unit)}

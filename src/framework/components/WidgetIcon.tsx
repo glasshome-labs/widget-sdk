@@ -106,7 +106,7 @@ export function WidgetIcon(props: WidgetIconProps): JSX.Element {
         props.dimmed && "opacity-50",
         // Only apply Tailwind classes when not using dynamic colors
         !useDynamic() && props.glow && "shadow-[0_0_25px]",
-        !useDynamic() && (props.color ?? "bg-white/10"),
+        !useDynamic() && (props.color ?? "bg-foreground/10"),
         !useDynamic() && props.glow,
         props.class,
       )}
@@ -115,13 +115,13 @@ export function WidgetIcon(props: WidgetIconProps): JSX.Element {
       {/* Stacked background effect: multiple backgrounds for multiple entities */}
       {(props.entityCount ?? 1) >= 2 && (
         <div
-          class={cn("absolute", !useDynamic() && (props.color ?? "bg-white/10"))}
+          class={cn("absolute", !useDynamic() && (props.color ?? "bg-foreground/10"))}
           style={stackStyle(0.14, -2, 0.45)}
         />
       )}
       {(props.entityCount ?? 1) >= 3 && (
         <div
-          class={cn("absolute", !useDynamic() && (props.color ?? "bg-white/10"))}
+          class={cn("absolute", !useDynamic() && (props.color ?? "bg-foreground/10"))}
           style={stackStyle(0.28, -3, 0.2)}
         />
       )}
@@ -130,7 +130,7 @@ export function WidgetIcon(props: WidgetIconProps): JSX.Element {
         style={{
           "font-size": `${spacing.iconSize(ctx.size())}px`,
         }}
-        class="flex items-center justify-center text-white"
+        class="flex items-center justify-center text-foreground"
       >
         {props.icon}
       </div>

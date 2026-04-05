@@ -98,8 +98,7 @@ export function generateRegistry(srcDir: string, outDir: string): void {
       const manifestPath = join(srcDir, dir, "manifest.json");
       try {
         const manifest = JSON.parse(readFileSync(manifestPath, "utf-8"));
-        // The directory name is the widget's tag/slug — not read from manifest
-        widgets.push({ ...manifest, tag: dir, bundleUrl: `./${dir}.js` });
+        widgets.push({ ...manifest, bundleUrl: `./${dir}.js` });
       } catch {
         // skip dirs without manifest
       }

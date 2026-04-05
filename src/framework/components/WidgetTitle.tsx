@@ -42,12 +42,12 @@ export function WidgetTitle(props: WidgetTitleProps): JSX.Element {
       class={cn("relative flex items-center", props.class)}
       style={{ gap: spacing.S1(ctx.size()), "z-index": WIDGET_Z.ACTIONS }}
     >
-      <h3 class={cn("truncate text-white/60", typography.title(ctx.size()))}>{props.children}</h3>
+      <h3 class={cn("truncate text-foreground/60", typography.title(ctx.size()))}>{props.children}</h3>
 
       {props.badge !== undefined && props.badge > 0 && (
         <span
           class={cn(
-            "shrink-0 rounded-full bg-white/20 px-2 py-0.5 font-medium text-white",
+            "shrink-0 rounded-full bg-foreground/20 px-2 py-0.5 font-medium text-foreground",
             typography.badge(ctx.size()),
           )}
         >

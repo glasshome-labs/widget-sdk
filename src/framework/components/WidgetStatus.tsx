@@ -36,7 +36,7 @@ export function WidgetStatus(props: WidgetStatusProps): JSX.Element {
   return (
     <p
       class={cn(
-        "relative font-bold text-white",
+        "relative font-bold text-foreground",
         props.dimmed && "opacity-40",
         typography.status(ctx.size()),
         props.class,
