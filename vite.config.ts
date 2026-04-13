@@ -1,7 +1,11 @@
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
+import pkg from "./package.json" with { type: "json" };
 
 export default defineConfig({
+  define: {
+    __SDK_VERSION__: JSON.stringify(pkg.version),
+  },
   plugins: [solid()],
   build: {
     lib: {
