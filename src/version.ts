@@ -1,7 +1,7 @@
 /**
  * SDK version constant for runtime version compatibility checking.
  * The host can compare this against widget manifest sdkVersion fields.
- * Injected at build time from package.json via Vite define.
+ * Read directly from package.json — single source of truth.
  */
-declare const __SDK_VERSION__: string;
-export const SDK_VERSION: string = __SDK_VERSION__;
+import pkg from "../package.json" with { type: "json" };
+export const SDK_VERSION: string = pkg.version;
