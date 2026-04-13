@@ -11,23 +11,23 @@ export const widgetFields = {
 		z
 			.string()
 			.optional()
-			.meta({ label: "Title", description: "Optional display name override" }),
+			.meta({ title: "Title", description: "Optional display name override" }),
 
 	/** Multi-select entity picker for a HA domain */
 	entityIds: (domain: string) =>
-		z.array(z.string()).default([]).meta({ domain, label: "Entities" }),
+		z.array(z.string()).default([]).meta({ domain, title: "Entities" }),
 
 	/** Single-select entity picker for a HA domain */
 	singleEntity: (domain: string) =>
 		z
 			.array(z.string())
 			.default([])
-			.meta({ domain, label: "Entity", singleSelect: true }),
+			.meta({ domain, title: "Entity", singleSelect: true }),
 
 	/** Area picker dropdown */
 	areaId: () =>
 		z
 			.string()
 			.optional()
-			.meta({ formType: "area-picker", label: "Area" }),
+			.meta({ formType: "area-picker", title: "Area" }),
 };
